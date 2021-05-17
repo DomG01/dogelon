@@ -45,9 +45,9 @@ export default class Ticker extends Component {
 			<div>
 				{
 					<div>
-						<p>DOGE > GBP: £{this.state.data.gbp}</p>
-						<p>DOGE > USD: ${this.state.data.usd}</p>
-						<p>DOGE > EUR: €{this.state.data.eur}</p>
+						<p>DOGE &gt; GBP: £{this.state.data.gbp}</p>
+						<p>DOGE &gt; USD: ${this.state.data.usd}</p>
+						<p>DOGE &gt; EUR: €{this.state.data.eur}</p>
 					</div>
 				}
 			</div>
