@@ -14,20 +14,15 @@ export default class Ticker extends Component {
 		// need to make the initial call to getData() to populate
 		// data right away
 		//console.log(getRequest());
-		this.setState(() => ({
-			data: this.getRequest()
-		}));
+		this.getRequest();
 		
 		// Now we need to make it run at a specified interval
-		setInterval(this.setState(() => ({
-			data: this.getRequest()
-		})), 10000); // runs every 10 seconds.
+		 // runs every 10 seconds.
 
 	}
 
 	async getRequest() {
 		let req = unirest("GET", "https://api.coingecko.com/api/v3/coins/dogecoin");
-		let currentPrices = {}
 
 		req.headers({
 			"accept": "application/json",
@@ -35,21 +30,25 @@ export default class Ticker extends Component {
 		});
 		req.end(async (res) => {
 			if (res.error) throw new Error(res.error);
-			//console.log(res.body.market_data.current_price); 
-			currentPrices = req.body;
+			this.setState(() => ({
+				data: res.body.market_data.current_price
+			}));
 		})
 
-		console.log(currentPrices)
-		return currentPrices;
-
-
+		setInterval(this.setState(() => ({
+			data: this.getRequest()
+		})), 10000);
 	}
 
 	render() {
 		return (
 			<div>
 				{
-					console.log(this.state.data)
+					<div>
+						<p>DOGE > GBP: £{this.state.data.gbp}</p>
+						<p>DOGE > USD: ${this.state.data.usd}</p>
+						<p>DOGE > EUR: €{this.state.data.eur}</p>
+					</div>
 				}
 			</div>
 		);
