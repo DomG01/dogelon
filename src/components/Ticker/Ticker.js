@@ -35,9 +35,9 @@ export default class Ticker extends Component {
 			}));
 		})
 
-		setInterval(this.setState(() => ({
-			data: this.getRequest()
-		})), 10000);
+		//setInterval(this.setState(() => ({
+			//data: this.getRequest()
+		//})), 10000);
 	}
 
 	render() {
