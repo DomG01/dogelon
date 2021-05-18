@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+	<Router basename={'https://DomG01.github.io/dogelon'}>
+		<App />
+	</Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
