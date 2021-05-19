@@ -7,7 +7,7 @@ req.headers({
 	"useQueryString": true,
 });
 
-let getRequest = () => {
+let getDogeRequest = () => {
 	return req.end(function (res) {
 		if (res.error) throw new Error(res.error);
 		//console.log(res.body.market_data.current_price); 
@@ -15,4 +15,6 @@ let getRequest = () => {
 	})
 };
 
-export default getRequest;
+
+
+export default getDogeRequest;
