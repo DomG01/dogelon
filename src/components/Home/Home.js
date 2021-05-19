@@ -1,10 +1,11 @@
 import unirest from 'unirest';
 import React, { Component } from 'react';
+import Ticker, { FinancialTicker, NewsTicker } from 'nice-react-ticker';
 
-import './Ticker.css';
+import './Home.css';
 // import getRequest from '../../modules/getRequest';
 
-export default class Ticker extends Component {
+export default class Home extends Component {
   constructor(props) {
 		super(props);
 		this.state = { dataDoge: {} , dataTesla: {} };
@@ -15,7 +16,7 @@ export default class Ticker extends Component {
 		// data right away
 		//console.log(getRequest());
 		this.getDogeRequest();
-		this.getTeslaRequest();
+		// this.getTeslaRequest();
 		
 		// Now we need to make it run at a specified interval
 		 // runs every 10 seconds.
@@ -23,7 +24,7 @@ export default class Ticker extends Component {
 		setInterval(() => {
 			console.log(1);
 			this.getDogeRequest();
-			this.getTeslaRequest();
+			// this.getTeslaRequest();
 		},60000)
 		}
 	
@@ -69,16 +70,16 @@ export default class Ticker extends Component {
 
 	render() {
 		return (
-			<div>
-				{
-					<div>
-						<p>DOGE &gt; GBP: £{this.state.dataDoge.gbp}</p>
-						<p>DOGE &gt; USD: ${this.state.dataDoge.usd}</p>
-						<p>DOGE &gt; EUR: €{this.state.dataDoge.eur}</p>
-						<p>TSLA &gt; USD: ${this.state.dataTesla.raw}</p>
-						
-					</div>
-				}
+			<div className="homeContainer">
+					<Ticker>
+          				<FinancialTicker id="DOGEGBP" symbol="DOGE-GBP" currentPrice={this.state.dataDoge.gbp} />
+         				<FinancialTicker id="DOGEUSD" symbol="DOGE-USD" currentPrice={this.state.dataDoge.usd} />
+          				<FinancialTicker id="DOGEEUR" symbol="DOGE-EUR" currentPrice={this.state.dataDoge.eur} />
+						<FinancialTicker id="DOGEGBP" symbol="DOGE-GBP" currentPrice={this.state.dataDoge.gbp} />
+         				<FinancialTicker id="DOGEUSD" symbol="DOGE-USD" currentPrice={this.state.dataDoge.usd} />
+          				<FinancialTicker id="DOGEEUR" symbol="DOGE-EUR" currentPrice={this.state.dataDoge.eur} />
+          				{/* <FinancialTicker id="TSLAUSD" change={true} symbol="TSLA-USD" currentPrice={this.state.dataTesla.raw} /> */}
+        			</Ticker>
 			</div>
 		);
 	}

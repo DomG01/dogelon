@@ -2,14 +2,14 @@ import React from 'react';
 import logo from './logo.png';
 import './App.css';
 
-import Ticker from './components/Ticker/Ticker';
+import Home from './components/Home/Home';
 
 function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
 				<img src={logo} className="App-logo" alt="logo" />
-				<Ticker />
+				<Home />
 
 			</header>
 		</div>
